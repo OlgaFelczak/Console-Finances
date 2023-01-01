@@ -87,19 +87,78 @@ var finances = [
   ["Feb-2017", 671099],
 ];
 
+console.log("Financial Analysis");
+console.log("----------------------");
+
 // Calculate the total number of months included in the dataset.
+const totalMonths = finances.length;
+
+console.log(totalMonths);
 
 // Calculate the net total amount of Profit/Losses over the entire period.
+let total = 0;
+
+for (let i = 0; i < finances.length; i++) {
+  const element = finances[i][1];
+  total += element;
+}
+
+console.log(total);
 
 // Calculate the average of the changes in Profit/Losses over the entire period.
-
 // Track what the total change in profits is from month to month and then find the average.
-
 // Calculate the average (Total/Number of months)
+const changes = [];
+
+for (let i = 1; i < finances.length; i++) {
+  const prevElement = finances[i - 1][1];
+  const element = finances[i][1];
+
+  const change = element - prevElement;
+
+  changes.push(change);
+}
+
+let total2 = 0;
+
+for (let i = 0; i < changes.length; i++) {
+  const element = changes[i];
+
+  total2 = total2 + element;
+}
+
+const avg = total2 / changes.length;
+
+console.log(avg);
 
 // Calculate the greatest increase in profits (date and amount) over the entire period.
+let greatestIncrease = ["", 0];
+
+for (let i = 1; i < finances.length; i++) {
+  const prevElement = finances[i - 1][1];
+  const element = finances[i][1];
+
+  const increase = element - prevElement;
+
+  if (increase > greatestIncrease[1])
+    greatestIncrease = [finances[i][0], increase];
+}
+
+console.log(greatestIncrease);
 
 // Calculate the greatest decrease in losses (date and amount) over the entire period.
+let greatestLose = ["", 0];
+
+for (let i = 1; i < finances.length; i++) {
+  const prevElement = finances[i - 1][1];
+  const element = finances[i][1];
+
+  const decrease = element - prevElement;
+
+  if (decrease < greatestLose[1]) greatestLose = [finances[i][0], decrease];
+}
+
+console.log(greatestLose);
 
 // When open the code in the browser resulting analysis should look similar to the following:
 
