@@ -93,7 +93,7 @@ console.log("----------------------");
 // Calculate the total number of months included in the dataset.
 const totalMonths = finances.length;
 
-console.log(totalMonths);
+console.log("Total Months: " + totalMonths);
 
 // Calculate the net total amount of Profit/Losses over the entire period.
 let total = 0;
@@ -103,7 +103,7 @@ for (let i = 0; i < finances.length; i++) {
   total += element;
 }
 
-console.log(total);
+console.log("Total: $" + total);
 
 // Calculate the average of the changes in Profit/Losses over the entire period.
 // Track what the total change in profits is from month to month and then find the average.
@@ -128,8 +128,9 @@ for (let i = 0; i < changes.length; i++) {
 }
 
 const avg = total2 / changes.length;
+const roundedAvg = avg.toFixed(2);
 
-console.log(avg);
+console.log("Average  Change: $" + roundedAvg);
 
 // Calculate the greatest increase in profits (date and amount) over the entire period.
 let greatestIncrease = ["", 0];
@@ -144,7 +145,13 @@ for (let i = 1; i < finances.length; i++) {
     greatestIncrease = [finances[i][0], increase];
 }
 
-console.log(greatestIncrease);
+console.log(
+  "Greatest Increase in Profits: " +
+    greatestIncrease[0] +
+    " ($" +
+    greatestIncrease[1] +
+    ")"
+);
 
 // Calculate the greatest decrease in losses (date and amount) over the entire period.
 let greatestLose = ["", 0];
@@ -158,7 +165,13 @@ for (let i = 1; i < finances.length; i++) {
   if (decrease < greatestLose[1]) greatestLose = [finances[i][0], decrease];
 }
 
-console.log(greatestLose);
+console.log(
+  "Greatest Decrease in Profits: " +
+    greatestLose[0] +
+    " ($" +
+    greatestLose[1] +
+    ")"
+);
 
 // When open the code in the browser resulting analysis should look similar to the following:
 
